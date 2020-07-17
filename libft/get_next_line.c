@@ -6,7 +6,7 @@
 /*   By: mjoss <mjoss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 20:49:08 by mjoss             #+#    #+#             */
-/*   Updated: 2019/10/08 15:42:04 by mjoss            ###   ########.fr       */
+/*   Updated: 2020/07/17 20:37:34 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int					wrline(t_list *lst, char **line)
 	char		*buf;
 	char		*tmp;
 
+	rd = 0;
 	if (!(buf = ft_strnew(BUFF_SIZE)))
 		return (-1);
 	while (!ft_strchr(lst->content, '\n') &&
