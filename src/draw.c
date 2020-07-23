@@ -73,7 +73,7 @@ static void	line_draw_low(t_windows window, int color, t_2vec vec0, t_2vec vec1)
 	yi = 1;
 	if (dy < 0)
 	{
-		dy = -1;
+		yi = -1;
 		dy = -dy;
 	}
 	D = 2 * dy - dx;
@@ -85,7 +85,7 @@ static void	line_draw_low(t_windows window, int color, t_2vec vec0, t_2vec vec1)
 		if (D > 0)
 		{
 			xy[1] = xy[1] + yi;
-			D= D - 2 * dx;
+			D = D - 2 * dx;
 		}
 		D = D + 2 * dy;
 		xy[0]++;
