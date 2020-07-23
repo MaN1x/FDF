@@ -15,13 +15,17 @@
 
 static void	put_pixel_in_image(t_windows window, int color, int x, int y)
 {
-	t_pixel	pixel;
+//	t_pixel	pixel;
 
-	pixel.color = color;
-	*(window.image_start + x * sizeof(int) + window.size_line * y) = pixel.byte[0];
-	*(window.image_start + x * sizeof(int) + window.size_line * y + 1) = pixel.byte[1];
-	*(window.image_start + x * sizeof(int) + window.size_line * y + 2) = pixel.byte[2];
-	*(window.image_start + x * sizeof(int) + window.size_line * y + 3) = pixel.byte[3];
+	if (x < window.width && y < window.height && x > 0 && y > 0)
+	{
+//		pixel.color = color;
+//		*(window.image_start + x * sizeof(int) + window.size_line * y) = pixel.byte[0];
+//		*(window.image_start + x * sizeof(int) + window.size_line * y + 1) = pixel.byte[1];
+//		*(window.image_start + x * sizeof(int) + window.size_line * y + 2) = pixel.byte[2];
+//		*(window.image_start + x * sizeof(int) + window.size_line * y + 3) = pixel.byte[3];
+		*((int*)(window.image_start + x * sizeof(int) + window.size_line * y)) = color;
+	}
 }
 
 static void	line_draw_h(t_windows window, int color, t_2vec vec0, t_2vec vec1)
