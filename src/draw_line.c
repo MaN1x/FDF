@@ -6,11 +6,10 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 19:50:36 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/17 17:11:15 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/24 00:32:16 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "fdf.h"
 
 static void	put_pixel_in_image(t_windows window, int color, int x, int y)
@@ -92,7 +91,7 @@ static void	line_draw_low(t_windows window, int color, t_2vec vec0, t_2vec vec1)
 	}
 }
 
-static int	abs(int x)
+static int	abs_my(int x)
 {
 	if (x < 0)
 		return -x;
@@ -102,7 +101,7 @@ static int	abs(int x)
 
 void		line_draw(t_windows window, int color, t_2vec vec0, t_2vec vec1)
 {
-	if (abs(vec1.y - vec0.y) < abs(vec1.x - vec0.x))
+	if (abs_my(vec1.y - vec0.y) < abs_my(vec1.x - vec0.x))
 	{
 		if (vec0.x > vec1.x)
 			line_draw_low(window, color, vec1, vec0);
