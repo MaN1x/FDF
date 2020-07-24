@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 02:15:24 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/24 16:19:51 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/24 17:58:20 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static void	pressed_key_z(t_mlx *mlx)
 {
-	mlx->map.transform_matrix = mul_matrix33_matrix33(mlx->map.transform_matrix, matrix_rotate_z(0, 2));
+	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_z(0, 2), mlx->map.transform_matrix);
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
@@ -26,7 +26,7 @@ static void	pressed_key_z(t_mlx *mlx)
 
 static void	pressed_key_y(t_mlx *mlx)
 {
-	mlx->map.transform_matrix = mul_matrix33_matrix33(mlx->map.transform_matrix, matrix_rotate_y(0, 2));
+	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_y(0, 2), mlx->map.transform_matrix);
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
@@ -36,7 +36,7 @@ static void	pressed_key_y(t_mlx *mlx)
 
 static void	pressed_key_x(t_mlx *mlx)
 {
-	mlx->map.transform_matrix = mul_matrix33_matrix33(mlx->map.transform_matrix, matrix_rotate_x(0, 2));
+	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(0, 2), mlx->map.transform_matrix);
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
