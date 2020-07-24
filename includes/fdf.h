@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:38:57 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/23 16:54:50 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/24 15:59:26 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,6 @@ typedef struct		s_map
 	int		shift_x;
 	int		shift_y;
 	float	scale;
-	float	angle_x;
-	float	angle_y;
-	float	angle_z;
 	t_matrix33	transform_matrix;
 	t_3vec	*map;
 }					t_map;

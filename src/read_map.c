@@ -99,13 +99,10 @@ t_map			read_map(int argc, char **argv)
 {
 	t_map	map;
 
-	map.angle_x = ISO_X;
-	map.angle_y = ISO_Y;
-	map.angle_z = ISO_Z;
 	map.shift_x = OFFSET_X;
 	map.shift_y = OFFSET_Y;
 	map.scale = 10;
-	map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(NULL, map.angle_x), matrix_rotate_z(NULL, map.angle_z));
+	map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(NULL, ISO_X), matrix_rotate_z(NULL, ISO_Z));
 	map.width = get_map_width(argv[1]);
 	map.height = get_map_height(argv[1]);
 	map.map = (t_3vec*)malloc(sizeof(t_3vec) * map.height * map.width);

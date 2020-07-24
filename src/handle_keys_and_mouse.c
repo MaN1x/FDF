@@ -112,6 +112,26 @@ static int	close(void *param)
 	exit(0);
 }
 
+static void iso_projection(t_mlx *mlx)
+{
+	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(NULL, ISO_X), matrix_rotate_z(NULL, ISO_Z));
+	mlx_destroy_image(mlx->mlx, mlx->windows.image);
+	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
+	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
+	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
+}
+
+static void parallel_projection(t_mlx *mlx)
+{
+	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(NULL, 0), matrix_rotate_z(NULL, 0));
+	mlx_destroy_image(mlx->mlx, mlx->windows.image);
+	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
+	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
+	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
+}
+
 static int	key_press(int key, void *param)
 {
 	(t_mlx*)param;
@@ -135,6 +155,10 @@ static int	key_press(int key, void *param)
 		pressed_d(param);
 	else if (key == 65307)
 		close(param);
+	else if (key == 49)
+		iso_projection(param);
+	else if (key == 50)
+		parallel_projection(param);
 	return (0);
 }
 
