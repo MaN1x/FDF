@@ -67,13 +67,13 @@ set(SOURCE_LIBFT libft/ft_memset.c
         libft/ft_lstaddn.c
         libft/ft_lstdelh.c
         libft/get_next_line.c
-        )
+        libft/ft_isspace.c)
 
 add_library(libft STATIC ${SOURCE_LIBFT})
 
 include_directories(includes minilibx libft/includes)
 
-add_executable(fdf src/main.c includes/fdf.h src/read_map.c src/draw.c)
+add_executable(fdf src/main.c includes/fdf.h src/read_map.c src/draw_line.c src/matrix.c src/handle_keys_and_mouse.c src/draw_map.c)
 
 target_link_libraries(fdf mlx Xext m bsd X11)
 

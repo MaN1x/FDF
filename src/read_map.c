@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:42:54 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/15 00:16:12 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/23 23:12:25 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,30 @@
 static int		get_map_width(char *path)
 {
 	int		fd;
+	int		flag;
 	int		width;
 	char	buf;
 
 	width = 0;
+	flag = 0;
 	fd = open(path, O_RDONLY);
 	while (read(fd, &buf, 1) > 0)
 	{
+		if (buf == '\n' || ft_isspace(buf) && flag == 0)
+		{
+			width++;
+			flag = 1;
+		}
+		if (ft_isdigit(buf))
+			flag = 0;
 		if (buf == '\n')
 		{
 			close(fd);
 			return (width);
 		}
-		if (buf != ' ')
-			width++;
 	}
+	close(fd);
+	return (width);
 }
 
 static int		get_map_height(char *path)
@@ -58,18 +67,23 @@ static void		fill_map(t_map map, char *path)
 	int		fd;
 	int		i;
 	int		j;
+	int		k;
 	char	*str;
 	char	**line;
 
 	i = 0;
 	j = 0;
+	k = 0;
 	fd = open(path, O_RDONLY);
 	while (get_next_line(fd, &str) > 0)
 	{
 		line = ft_strsplit(str, ' ');
 		while (line[i])
 		{
-			map.map[j][i] = ft_atoi(line[i]);
+			map.map[k].x = (float)i;
+			map.map[k].y = (float)j;
+			map.map[k].z = (float)ft_atoi(line[i]);
+			k++;
 			free(line[i]);
 			i++;
 		}
@@ -78,19 +92,23 @@ static void		fill_map(t_map map, char *path)
 		free(line);
 		j++;
 	}
+	close(fd);
 }
 
 t_map			read_map(int argc, char **argv)
 {
-	int		i;
 	t_map	map;
 
-	i = 0;
+	map.angle_x = ISO_X;
+	map.angle_y = ISO_Y;
+	map.angle_z = ISO_Z;
+	map.shift_x = OFFSET_X;
+	map.shift_y = OFFSET_Y;
+	map.scale = 10;
+	map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(NULL, map.angle_x), matrix_rotate_z(NULL, map.angle_z));
 	map.width = get_map_width(argv[1]);
 	map.height = get_map_height(argv[1]);
-	map.map = (int**)malloc(sizeof(int*) * map.height);
-	while (i != map.height)
-		map.map[i++] = (int*)malloc(sizeof(int) * map.width);
+	map.map = (t_3vec*)malloc(sizeof(t_3vec) * map.height * map.width);
 	fill_map(map, argv[1]);
 	return (map);
 }

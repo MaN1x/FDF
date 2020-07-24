@@ -6,7 +6,7 @@
 #    By: maxim <maxim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/12 00:28:37 by maxim             #+#    #+#              #
-#    Updated: 2020/07/17 18:01:37 by maxim            ###   ########.fr        #
+#    Updated: 2020/07/23 23:56:10 by maxim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,10 @@ LIB_MLX = -L$(MLX_DIR) -lmlx -L/usr/include -lXext -lX11 -lm -lbsd
 
 SRC_FILES = main.c		\
 			read_map.c	\
-			draw.c
+			draw_line.c	\
+			draw_map.c	\
+			matrix.c	\
+			handle_keys_and_mouse.c
 
 SRCS = $(addprefix $(SRC_DIR, $(SRC_FILES)))
 OBJS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
