@@ -6,11 +6,11 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 02:15:24 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/23 17:10:47 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/24 16:19:51 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include <stdlib.h>
 #include "fdf.h"
 #include "mlx.h"
 
@@ -106,6 +106,12 @@ static void pressed_a(t_mlx *mlx)
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
+static int	close(void *param)
+{
+	(void)param;
+	exit(0);
+}
+
 static int	key_press(int key, void *param)
 {
 	(t_mlx*)param;
@@ -127,6 +133,8 @@ static int	key_press(int key, void *param)
 		pressed_a(param);
 	else if (key == 100)
 		pressed_d(param);
+	else if (key == 65307)
+		close(param);
 	return (0);
 }
 
