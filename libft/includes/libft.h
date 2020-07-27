@@ -86,5 +86,6 @@ t_list				*ft_lst_n(t_list *lst, size_t n);
 void				ft_lstaddn(t_list **lst, t_list *new, size_t n);
 void				ft_lstdelh(t_list **lst, void(*del)(void*, size_t));
 int					ft_isspace(int c);
+int					ft_atoi_hex(const char *str);
 
 #endif
