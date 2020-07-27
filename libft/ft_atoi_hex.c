@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 17:23:51 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/27 18:57:16 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/27 20:48:55 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int			ft_atoi_hex(const char *str)
 		str++;
 	if (ft_strncmp(str, "0x", 2) == 0)
 		str += 2;
-	while (*str)
+	while ((*str >= '0' && *str <= '9') || (*str >= 'A' && *str <= 'F') || (*str >= 'a' && *str <= 'f'))
 	{
 		if (letter_to_integer(*str))
 			out = out * 16 + letter_to_integer(*str);
