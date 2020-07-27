@@ -75,7 +75,8 @@ SRCS = ./ft_memset.c		\
 	   ./ft_lstaddn.c		\
 	   ./ft_lstdelh.c		\
 	   ./get_next_line.c	\
-	   ./ft_isspace.c
+	   ./ft_isspace.c		\
+	   ./ft_atoi_hex.c
 
 OBJ = $(SRCS:.c=.o)
 
