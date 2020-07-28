@@ -62,6 +62,25 @@ static int		get_map_height(char *path)
 	return (height);
 }
 
+static void		parse_color_and_z(t_3vec *vec, char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] != ',')
+		i++;
+	if (line[i] == '\0')
+	{
+		vec->z = (float)ft_atoi(line);
+		vec->color = DEFAULT_COLOR;
+	}
+	else if (line[i] == ',')
+	{
+		vec->z = (float)ft_atoi(line);
+		vec->color = ft_atoi_hex(&line[i + 1]);
+	}
+}
+
 static void		fill_map(t_map map, char *path)
 {
 	int		fd;
@@ -82,7 +101,7 @@ static void		fill_map(t_map map, char *path)
 		{
 			map.map[k].x = (float)i;
 			map.map[k].y = (float)j;
-			map.map[k].z = (float)ft_atoi(line[i]);
+			parse_color_and_z(&map.map[k], line[i]);
 			k++;
 			free(line[i]);
 			i++;

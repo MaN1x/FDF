@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:38:57 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/24 15:59:26 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/28 16:12:00 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_FDF_H
 # define OFFSET_X 400
 # define OFFSET_Y 300
+# define DEFAULT_COLOR 0x000000FF
 # define MOVE_X 70
 # define MOVE_Y 70
 # define ISO_X 35.3
@@ -29,6 +30,7 @@ typedef struct		s_2vec
 {
 	int x;
 	int y;
+	int color;
 }					t_2vec;
 
 typedef struct		s_3vec
@@ -36,6 +38,7 @@ typedef struct		s_3vec
 	float	x;
 	float	y;
 	float	z;
+	int		color;
 }					t_3vec;
 
 /*
@@ -45,9 +48,9 @@ typedef struct		s_3vec
 
 typedef struct		s_matrix33
 {
-	t_3vec vec0;
-	t_3vec vec1;
-	t_3vec vec2;
+	t_3vec	vec0;
+	t_3vec	vec1;
+	t_3vec	vec2;
 }					t_matrix33;
 
 /*
@@ -108,7 +111,7 @@ t_matrix33			matrix_rotate_y(t_3vec *vec, float angle);
 t_matrix33			matrix_rotate_z(t_3vec *vec, float angle);
 t_matrix33			mul_matrix33_matrix33(t_matrix33 matrix1, t_matrix33 matrix2);
 t_matrix33			matrix_orthographic(t_3vec *vec);
-void				map_draw(t_windows window, int color, t_map map);
+void				map_draw(t_windows window, t_map map);
 void				handle_keys_and_mouse(t_mlx *mlx);
 t_matrix33			matrix_scale(t_3vec *vec, float scale);
 

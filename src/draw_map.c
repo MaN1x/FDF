@@ -6,9 +6,11 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 23:55:03 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/23 23:55:03 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/28 17:18:09 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 #include <stdlib.h>
 #include "fdf.h"
@@ -42,13 +44,14 @@ static t_2vec	*from_map_to_array(t_map map)
 	{
 		vec[i].x = (int)vec_tmp[i].x + map.shift_x;
 		vec[i].y = (int)vec_tmp[i].y + map.shift_y;
+		vec[i].color = map.map[i].color;
 		i++;
 	}
 	free(vec_tmp);
 	return (vec);
 }
 
-static void	draw_hor_lines(t_windows window, int color, t_map map, t_2vec *vec)
+static void	draw_hor_lines(t_windows window, t_map map, t_2vec *vec)
 {
 	int i;
 	int j;
@@ -61,7 +64,7 @@ static void	draw_hor_lines(t_windows window, int color, t_map map, t_2vec *vec)
 	{
 		while (i < map.width - 1)
 		{
-			line_draw(window, color, vec[k], vec[k + 1]);
+			line_draw(window, vec[k].color, vec[k], vec[k + 1]);
 			i++;
 			k++;
 		}
@@ -71,7 +74,7 @@ static void	draw_hor_lines(t_windows window, int color, t_map map, t_2vec *vec)
 	}
 }
 
-static void	draw_ver_lines(t_windows window, int color, t_map map, t_2vec *vec)
+static void	draw_ver_lines(t_windows window, t_map map, t_2vec *vec)
 {
 	int i;
 	int j;
@@ -84,7 +87,7 @@ static void	draw_ver_lines(t_windows window, int color, t_map map, t_2vec *vec)
 	{
 		while (i < map.height - 1)
 		{
-			line_draw(window, color, vec[k], vec[k + map.width]);
+			line_draw(window, vec[k].color, vec[k], vec[k + map.width]);
 			i++;
 			k+= map.width;
 		}
@@ -94,13 +97,13 @@ static void	draw_ver_lines(t_windows window, int color, t_map map, t_2vec *vec)
 	}
 }
 
-void		map_draw(t_windows window, int color, t_map map)
+void		map_draw(t_windows window, t_map map)
 {
 	t_2vec	*vec;
 
 	vec = from_map_to_array(map);
-	draw_hor_lines(window, color, map, vec);
-	draw_ver_lines(window, color, map, vec);
+	draw_hor_lines(window, map, vec);
+	draw_ver_lines(window, map, vec);
 
 	free(vec);
 }

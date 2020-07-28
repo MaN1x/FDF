@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 
 
 
-	map_draw(mlx.windows, 0x00FF0000, mlx.map);
+	map_draw(mlx.windows, mlx.map);
 
 
 

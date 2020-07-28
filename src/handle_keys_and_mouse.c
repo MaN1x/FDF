@@ -20,7 +20,7 @@ static void	pressed_key_z(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -30,7 +30,7 @@ static void	pressed_key_y(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -40,7 +40,7 @@ static void	pressed_key_x(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -52,7 +52,7 @@ static void	pressed_minus(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -62,7 +62,7 @@ static void	pressed_plus(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -72,7 +72,7 @@ static void pressed_w(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -82,7 +82,7 @@ static void pressed_s(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -92,7 +92,7 @@ static void pressed_d(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -102,7 +102,7 @@ static void pressed_a(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -118,7 +118,7 @@ static void iso_projection(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
@@ -128,7 +128,7 @@ static void parallel_projection(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width, mlx->windows.height);
 	mlx->windows.image_start = mlx_get_data_addr(mlx->windows.image, &mlx->windows.bpp, &mlx->windows.size_line, &mlx->windows.endian);
-	map_draw(mlx->windows, 0x00FF0000, mlx->map);
+	map_draw(mlx->windows, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->windows.window, mlx->windows.image, 0, 0);
 }
 
