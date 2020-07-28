@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:42:54 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/23 23:12:25 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/28 15:55:55 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,6 @@ t_map			read_map(int argc, char **argv)
 {
 	t_map	map;
 
-	map.shift_x = OFFSET_X;
-	map.shift_y = OFFSET_Y;
 	map.scale = 10;
 	map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(NULL, ISO_X), matrix_rotate_z(NULL, ISO_Z));
 	map.width = get_map_width(argv[1]);

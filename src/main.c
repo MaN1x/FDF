@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:39:02 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/23 23:33:53 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/28 15:47:38 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
  */
 
 	mlx.map = read_map(argc, argv);
+	mlx.map.shift_x = (int)mlx.windows.width / 2;
+	mlx.map.shift_y = (int)mlx.windows.height / 2;
 
 /*
  * =============================================================================
