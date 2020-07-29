@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 02:15:24 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/24 17:58:20 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/29 18:42:25 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,16 @@ static int	key_press(int key, void *param)
 	return (0);
 }
 
-void	handle_keys_and_mouse(t_mlx *mlx)
+static int	mouse_press(int button, int x, int y, void *param)
+{
+	if (button == 4)
+		pressed_plus(param);
+	else if (button == 5)
+		pressed_minus(param);
+}
+
+void		handle_keys_and_mouse(t_mlx *mlx)
 {
 	mlx_key_hook(mlx->windows.window, key_press, mlx);
+	mlx_mouse_hook(mlx->windows.window, mouse_press, mlx);
 }
