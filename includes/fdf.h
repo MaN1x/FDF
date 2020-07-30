@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:38:57 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/28 16:12:00 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/29 19:34:30 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,14 @@ typedef union 		u_pixel
  */
 typedef struct		s_map
 {
-	int		width;
-	int		height;
-	int		shift_x;
-	int		shift_y;
-	float	scale;
+	int			amount_elements;
+	int			*widths;
+	int			height;
+	int			shift_x;
+	int			shift_y;
+	float		scale;
 	t_matrix33	transform_matrix;
-	t_3vec	*map;
+	t_3vec		*map;
 }					t_map;
 
 /*

@@ -6,11 +6,9 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 23:55:03 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/28 17:18:09 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/30 16:51:58 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 #include <stdlib.h>
 #include "fdf.h"
@@ -29,8 +27,8 @@ static t_2vec	*from_map_to_array(t_map map)
 
 	i = 0;
 	tmp = mul_matrix33_matrix33(matrix_scale(NULL, map.scale), map.transform_matrix);
-	vec_tmp = (t_3vec*)malloc(sizeof(t_3vec) * map.width * map.height);
-	while (i < map.width * map.height)
+	vec_tmp = (t_3vec*)malloc(sizeof(t_3vec) * map.amount_elements);
+	while (i < map.amount_elements)
 	{
 		vec_tmp[i].x = map.map[i].x;
 		vec_tmp[i].y = map.map[i].y;
@@ -39,8 +37,8 @@ static t_2vec	*from_map_to_array(t_map map)
 		i++;
 	}
 	i = 0;
-	vec = (t_2vec*)malloc(sizeof(t_2vec) * map.width * map.height);
-	while (i < map.width * map.height)
+	vec = (t_2vec*)malloc(sizeof(t_2vec) * map.amount_elements);
+	while (i < map.amount_elements)
 	{
 		vec[i].x = (int)vec_tmp[i].x + map.shift_x;
 		vec[i].y = (int)vec_tmp[i].y + map.shift_y;
@@ -62,38 +60,19 @@ static void	draw_hor_lines(t_windows window, t_map map, t_2vec *vec)
 	k = 0;
 	while (j < map.height)
 	{
-		while (i < map.width - 1)
+		while (i < map.widths[j] - 1)
 		{
 			line_draw(window, vec[k].color, vec[k], vec[k + 1]);
+			if (j != map.height - 1 && i < map.widths[j + 1])
+				line_draw(window, vec[k].color, vec[k], vec[k + map.widths[j]]);
 			i++;
 			k++;
+			if (i == map.widths[j] - 1 && j < map.height - 1)
+				line_draw(window, vec[k].color, vec[k], vec[k + map.widths[j]]);
 		}
 		k++;
 		i = 0;
 		j++;
-	}
-}
-
-static void	draw_ver_lines(t_windows window, t_map map, t_2vec *vec)
-{
-	int i;
-	int j;
-	int k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	while (j < map.width)
-	{
-		while (i < map.height - 1)
-		{
-			line_draw(window, vec[k].color, vec[k], vec[k + map.width]);
-			i++;
-			k+= map.width;
-		}
-		i = 0;
-		j++;
-		k = j;
 	}
 }
 
@@ -103,7 +82,6 @@ void		map_draw(t_windows window, t_map map)
 
 	vec = from_map_to_array(map);
 	draw_hor_lines(window, map, vec);
-	draw_ver_lines(window, map, vec);
 
 	free(vec);
 }
