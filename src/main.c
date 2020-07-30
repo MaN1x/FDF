@@ -6,18 +6,40 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:39:02 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/28 15:47:38 by maxim            ###   ########.fr       */
+/*   Updated: 2020/07/30 17:26:55 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include "libft.h"
+#include <unistd.h>
+#include <stdio.h>
 #include "mlx.h"
 #include <stdlib.h>
 #include "fdf.h"
+
+static void check_args(int argc, char **argv)
+{
+	int	fd;
+
+	if (argc != 2)
+	{
+		ft_putstr_fd("wrong number of arguments\n", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	if ((fd = open(argv[1], O_RDONLY)) < 0)
+	{
+		perror(NULL);
+		exit(EXIT_FAILURE);
+	}
+	close(fd);
+}
 
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
 
+	check_args(argc, argv);
 	mlx.windows.width = 800;
 	mlx.windows.height = 600;
 
