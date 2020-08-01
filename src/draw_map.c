@@ -6,17 +6,27 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 23:55:03 by maxim             #+#    #+#             */
-/*   Updated: 2020/07/30 16:51:58 by maxim            ###   ########.fr       */
+/*   Updated: 2020/08/01 19:18:53 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "fdf.h"
 
-//static int	clipping(t_map map, t_2vec vec)
-//{
-//
-//}
+static void		cpy_and_mul(t_3vec *vec_tmp, t_map map, t_matrix33 mtx)
+{
+	int	i;
+
+	i = 0;
+	while (i < map.amount_elements)
+	{
+		vec_tmp[i].x = map.map[i].x;
+		vec_tmp[i].y = map.map[i].y;
+		vec_tmp[i].z = map.map[i].z;
+		mul_matrix33_vec(mtx, &vec_tmp[i]);
+		i++;
+	}
+}
 
 static t_2vec	*from_map_to_array(t_map map)
 {
@@ -26,16 +36,10 @@ static t_2vec	*from_map_to_array(t_map map)
 	int			i;
 
 	i = 0;
-	tmp = mul_matrix33_matrix33(matrix_scale(NULL, map.scale), map.transform_matrix);
+	tmp = mul_matrix33_matrix33(matrix_scale(NULL, map.scale),
+														map.transform_matrix);
 	vec_tmp = (t_3vec*)malloc(sizeof(t_3vec) * map.amount_elements);
-	while (i < map.amount_elements)
-	{
-		vec_tmp[i].x = map.map[i].x;
-		vec_tmp[i].y = map.map[i].y;
-		vec_tmp[i].z = map.map[i].z;
-		mul_matrix33_vec(tmp, &vec_tmp[i]);
-		i++;
-	}
+	cpy_and_mul(vec_tmp, map, tmp);
 	i = 0;
 	vec = (t_2vec*)malloc(sizeof(t_2vec) * map.amount_elements);
 	while (i < map.amount_elements)
@@ -49,7 +53,7 @@ static t_2vec	*from_map_to_array(t_map map)
 	return (vec);
 }
 
-static void	draw_hor_lines(t_windows window, t_map map, t_2vec *vec)
+static void		draw_hor_lines(t_windows window, t_map map, t_2vec *vec)
 {
 	int i;
 	int j;
@@ -76,12 +80,11 @@ static void	draw_hor_lines(t_windows window, t_map map, t_2vec *vec)
 	}
 }
 
-void		map_draw(t_windows window, t_map map)
+void			map_draw(t_windows window, t_map map)
 {
 	t_2vec	*vec;
 
 	vec = from_map_to_array(map);
 	draw_hor_lines(window, map, vec);
-
 	free(vec);
 }

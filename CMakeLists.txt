@@ -74,7 +74,7 @@ add_library(libft STATIC ${SOURCE_LIBFT})
 
 include_directories(includes minilibx libft/includes)
 
-add_executable(fdf src/main.c includes/fdf.h src/read_map.c src/draw_line.c src/matrix.c src/handle_keys_and_mouse.c src/draw_map.c)
+add_executable(fdf src/main.c includes/fdf.h src/read_map.c src/draw_line.c src/matrix.c src/handle_keys_and_mouse.c src/draw_map.c src/zoom_and_xyz_is_pressed.c src/wasd_is_pressed.c src/digits_is_pressed.c src/abs_my.c src/rotate_matrix.c src/get_map_params.c)
 
 target_link_libraries(fdf mlx Xext m bsd X11)
 

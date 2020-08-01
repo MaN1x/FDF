@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   abs_my.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjoss <mjoss@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/24 22:22:35 by mjoss             #+#    #+#             */
-/*   Updated: 2020/08/01 19:04:45 by maxim            ###   ########.fr       */
+/*   Created: 2020/08/01 14:57:13 by maxim             #+#    #+#             */
+/*   Updated: 2020/08/01 14:57:13 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_GET_NEXT_LINE_H
-# define GNL_GET_NEXT_LINE_H
-# define BUFF_SIZE   32
-
-int get_next_line(int fd, char **line);
-
-#endif
+int	abs_my(int x)
+{
+	if (x < 0)
+		return (-x);
+	else
+		return (x);
+}
