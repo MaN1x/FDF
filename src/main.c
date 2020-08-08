@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:39:02 by maxim             #+#    #+#             */
-/*   Updated: 2020/08/01 17:27:26 by maxim            ###   ########.fr       */
+/*   Updated: 2020/08/08 18:06:35 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int			main(int argc, char **argv)
 	t_mlx	mlx;
 
 	check_args(argc, argv);
-	mlx.windows.width = 800;
-	mlx.windows.height = 600;
+	mlx.windows.width = WINDOW_WIDTH;
+	mlx.windows.height = WINDOW_HEIGHT;
 	mlx.map = read_map(argv);
 	mlx.map.shift_x = (int)mlx.windows.width / 2;
 	mlx.map.shift_y = (int)mlx.windows.height / 2;

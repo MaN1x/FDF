@@ -6,14 +6,14 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:38:57 by maxim             #+#    #+#             */
-/*   Updated: 2020/08/01 18:37:03 by maxim            ###   ########.fr       */
+/*   Updated: 2020/08/08 18:08:01 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_FDF_H
 # define FDF_FDF_H
-# define OFFSET_X 400
-# define OFFSET_Y 300
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
 # define DEFAULT_COLOR 0x00FFFFFF
 # define MOVE_X 70
 # define MOVE_Y 70
@@ -43,12 +43,6 @@ typedef struct		s_matrix33
 	t_3vec	vec1;
 	t_3vec	vec2;
 }					t_matrix33;
-
-typedef union		u_pixel
-{
-	int		color;
-	char	byte[sizeof(int)];
-}					t_pixel;
 
 typedef struct		s_map
 {
