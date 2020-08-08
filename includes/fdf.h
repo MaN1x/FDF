@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:38:57 by maxim             #+#    #+#             */
-/*   Updated: 2020/08/08 18:08:01 by maxim            ###   ########.fr       */
+/*   Updated: 2020/08/08 18:17:14 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define FDF_FDF_H
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
+# define ROTATE_X 5
+# define ROTATE_Y 5
+# define ROTATE_Z 5
 # define DEFAULT_COLOR 0x00FFFFFF
 # define MOVE_X 70
 # define MOVE_Y 70

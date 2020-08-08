@@ -15,7 +15,7 @@
 
 void	pressed_key_z(t_mlx *mlx)
 {
-	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_z(0, 2),
+	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_z(0, ROTATE_Z),
 													mlx->map.transform_matrix);
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width,
@@ -29,7 +29,7 @@ void	pressed_key_z(t_mlx *mlx)
 
 void	pressed_key_y(t_mlx *mlx)
 {
-	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_y(0, 2),
+	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_y(0, ROTATE_Y),
 													mlx->map.transform_matrix);
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width,
@@ -43,7 +43,7 @@ void	pressed_key_y(t_mlx *mlx)
 
 void	pressed_key_x(t_mlx *mlx)
 {
-	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(0, 2),
+	mlx->map.transform_matrix = mul_matrix33_matrix33(matrix_rotate_x(0, ROTATE_X),
 													mlx->map.transform_matrix);
 	mlx_destroy_image(mlx->mlx, mlx->windows.image);
 	mlx->windows.image = mlx_new_image(mlx->mlx, mlx->windows.width,
