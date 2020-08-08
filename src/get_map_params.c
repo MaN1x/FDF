@@ -21,12 +21,14 @@ int			get_map_height(char *path)
 	int		height;
 	char	buf;
 
-	height = 0;
+	height = 1;
 	fd = open(path, O_RDONLY);
 	while (read(fd, &buf, 1) > 0)
 		if (buf == '\n')
 			height++;
 	close(fd);
+	if (buf == '\n')
+		height--;
 	return (height);
 }
 
