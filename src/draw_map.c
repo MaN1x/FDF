@@ -6,7 +6,7 @@
 /*   By: maxim <maxim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 23:55:03 by maxim             #+#    #+#             */
-/*   Updated: 2020/08/01 19:18:53 by maxim            ###   ########.fr       */
+/*   Updated: 2020/08/08 18:01:44 by maxim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static t_2vec	*from_map_to_array(t_map map)
 	t_3vec		*vec_tmp;
 	int			i;
 
-	i = 0;
 	tmp = mul_matrix33_matrix33(matrix_scale(NULL, map.scale),
 														map.transform_matrix);
 	vec_tmp = (t_3vec*)malloc(sizeof(t_3vec) * map.amount_elements);
@@ -72,7 +71,8 @@ static void		draw_hor_lines(t_windows window, t_map map, t_2vec *vec)
 			i++;
 			k++;
 			if (i == map.widths[j] - 1 && j < map.height - 1)
-				line_draw(window, vec[k].color, vec[k], vec[k + map.widths[j]]);
+				while (i++ <= map.widths[j + 1] - 1)
+					line_draw(window, vec[k].color, vec[k], vec[k + i++]);
 		}
 		k++;
 		i = 0;
